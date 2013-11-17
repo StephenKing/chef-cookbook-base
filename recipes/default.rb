@@ -21,13 +21,6 @@
 ::Chef::Recipe.send(:include, Typo3::Base::Recipe)
 
 #######################
-# Operating System specific options
-#######################
-
-include_recipe "operatingsystem::default"
-
-
-#######################
 # Physical and Virtualized host
 #######################
 
@@ -59,3 +52,8 @@ unless Chef::Config[:solo] || Chef::Config[:local_mode]
   include_recipe "datacenter::default"
 end
 
+#######################
+# Operating System specific options
+#######################
+
+include_recipe "operatingsystem::default"

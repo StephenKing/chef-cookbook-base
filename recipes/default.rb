@@ -55,7 +55,7 @@ end
 # Datacenter
 #######################
 
-unless Chef::Config[:solo]
+unless Chef::Config[:solo] || Chef::Config[:local_mode]
   include_recipe "datacenter::default"
 end
 

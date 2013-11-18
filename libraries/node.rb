@@ -27,10 +27,10 @@ module Typo3
 
       def virtualization?
         return node.key?(:virtualization)
-
       end
+
       def virtualized?
-        return virtualization? && node[:virtualization][:role] == "guest"
+        return virtualization? && node[:virtualization][:role].eql?("guest")
       end
     end
   end

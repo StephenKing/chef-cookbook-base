@@ -17,3 +17,11 @@
 # limitations under the License.
 #
 
+if physical?
+  Chef::Log.debug("Running on a physical host")
+
+  include_recipe "hwraid::autodetect"
+
+else
+  Chef::Log.info("Not running on a physical host, skipping base::physical")
+end

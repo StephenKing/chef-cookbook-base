@@ -12,3 +12,4 @@ depends "openvz", "~> 1.0.0"
 # others
 depends "datacenter", "~> 1.0.0"
 depends "operatingsystem", "~> 1.0.0"
+depends "hwraid", "~> 1.0.0"

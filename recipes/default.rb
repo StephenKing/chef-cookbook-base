@@ -24,13 +24,8 @@
 # Physical and Virtualized host
 #######################
 
-if physical?
-  Chef::Log.debug("Running on a physical host")
-  include_recipe "base::physical"
-else
-  Chef::Log.debug("Running virtualized")
-  include_recipe "base::virtualized"
-end
+include_recipe "base::physical"
+include_recipe "base::virtualized"
 
 
 #######################
@@ -43,14 +38,17 @@ if virtualization?
   include_if_available "#{node[:virtualization][:system]}::default"
 end
 
+#######################
+# Base software
+#######################
+
+include_recipe "base::software"
 
 #######################
 # Datacenter
 #######################
 
-unless Chef::Config[:solo] || Chef::Config[:local_mode]
-  include_recipe "datacenter::default"
-end
+include_recipe "datacenter::default"
 
 #######################
 # Operating System specific options

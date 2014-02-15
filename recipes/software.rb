@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: base
-# Recipe:: virtualized
+# Recipe:: software
 #
-# Copyright 2013, TYPO3 Association
+# Copyright 2014, TYPO3 Association
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +17,25 @@
 # limitations under the License.
 #
 
-unless physical?
-  Chef::Log.debug("Running virtualized")
-else
-  Chef::Log.info("Not running virtualized, skipping base::virtualized")
+
+packages = %w{
+  bc
+  curl
+  htop
+  iftop
+  iotop
+  lynx
+  mc
+  nano
+  tcpdump
+  telnet
+  traceroute
+  wget
+  whois
+}
+
+packages.each do |pkg|
+  package pkg do
+    action :upgrade
+  end
 end
